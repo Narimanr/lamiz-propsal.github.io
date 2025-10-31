@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروپوزال جامع ارتقای دیجیتال قهوه لمیز | سبا سیستم</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f8f6f3;
+            --bg-secondary: #ffffff;
+            --bg-dark: #1a1814;
+            --text-primary: #1a1814;
+            --text-secondary: #6b6560;
+            --text-light: #9a938c;
+            --accent-primary: #8b4513;
+            --accent-gold: #d4af37;
+            --accent-light: #c19a6b;
+            --border-subtle: rgba(139, 69, 19, 0.15);
+            --shadow-soft: rgba(139, 69, 19, 0.08);
+            --overlay: rgba(26, 24, 20, 0.7);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #1a1814;
+                --bg-secondary: #2d2823;
+                --bg-dark: #0f0e0c;
+                --text-primary: #f8f6f3;
+                --text-secondary: #c4bfb8;
+                --text-light: #8a8480;
+                --border-subtle: rgba(212, 175, 55, 0.2);
+                --shadow-soft: rgba(212, 175, 55, 0.12);
+                --overlay: rgba(248, 246, 243, 0.05);
+            }
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.9;
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        /* Elegant Header */
+        header {
+            background: var(--bg-secondary);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .logo-item::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 40px;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: transform 0.5s ease;
+        }
+
+        .logo-item:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .logo-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .logo-item img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0.3);
+            transition: filter 0.4s ease;
+        }
+
+        .logo-item:hover img {
+            filter: grayscale(0);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .logo-item img {
+                filter: brightness(1.1) grayscale(0.2);
+            }
+
+            .logo-item:hover img {
+                filter: brightness(1.3) grayscale(0);
+            }
+        }
+
+        .logo-label {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Luxury Hero */
+        .hero {
+            position: relative;
+            padding: 140px 0 120px;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1501339847302-ac426a4a7cbb-1.jpg') center/cover;
+            opacity: 0.04;
+            z-index: 0;
+            filter: grayscale(1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.8em;
+            font-weight: 200;
+            letter-spacing: 15px;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 6px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.3s forwards;
+            text-transform: uppercase;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 40px auto;
+            opacity: 0;
+            animation: fadeIn 1.2s ease 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+
+            from {
+                opacity: 0;
+            }
+        }
+
+        /* Elegant Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .section-number {
+            font-size: 0.85em;
+            color: var(--accent-gold);
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.8em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--accent-gold);
+        }
+
+        .section-intro {
+            max-width: 900px;
+            margin: 30px auto 0;
+            font-size: 1.15em;
+            color: var(--text-secondary);
+            line-height: 2.2;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Premium Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            padding: 50px 40px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 60px var(--shadow-soft);
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .card-title {
+            font-size: 1.6em;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            margin-bottom: 30px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 14px 16px 14px 35px;
+            color: var(--text-secondary);
+            position: relative;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .card ul li::before {
+            content: '◆';
+            position: absolute;
+            right: 0;
+            color: var(--accent-gold);
+            font-size: 0.7em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .card:hover ul li {
+            color: var(--text-primary);
+        }
+
+        /* Refined Table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 60px 0;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+        }
+
+        thead th {
+            color: var(--bg-primary);
+            padding: 25px 30px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-align: right;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: var(--overlay);
+        }
+
+        tbody td {
+            padding: 22px 30px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        tbody td:first-child {
+            color: var(--accent-primary);
+            font-weight: 400;
+        }
+
+        /* Elegant Timeline */
+        .timeline-section {
+            max-width: 1100px;
+            margin: 80px auto;
+            position: relative;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            right: 40px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-right: 110px;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+        }
+
+        .timeline-marker {
+            position: absolute;
+            right: 28px;
+            top: 8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 4px solid var(--bg-primary);
+            box-shadow: 0 0 0 4px var(--border-subtle);
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            padding: 35px 40px;
+            border: 1px solid var(--border-subtle);
+            border-right: 3px solid var(--accent-primary);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-content:hover {
+            border-right-color: var(--accent-gold);
+            transform: translateX(-10px);
+            box-shadow: 0 10px 40px var(--shadow-soft);
+        }
+
+        .timeline-phase {
+            font-size: 1.4em;
+            color: var(--accent-primary);
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-duration {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+            color: var(--bg-primary);
+            padding: 6px 18px;
+            font-size: 0.85em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .timeline-output {
+            color: var(--text-light);
+            font-size: 0.95em;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .timeline-output strong {
+            color: var(--accent-gold);
+            font-style: normal;
+        }
+
+        /* Premium Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            padding: 50px 35px;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--overlay), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 50px var(--shadow-soft);
+        }
+
+        .stat-number {
+            font-size: 4em;
+            font-weight: 200;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .stat-label {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        /* Feature List */
+        .feature-list {
+            margin: 60px 0;
+        }
+
+        .feature-item {
+            background: var(--bg-secondary);
+            border-right: 2px solid var(--accent-primary);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            border-left: 1px solid var(--border-subtle);
+            padding: 28px 35px;
+            margin: 20px 0;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .feature-item:hover {
+            transform: translateX(-8px);
+            border-right-color: var(--accent-gold);
+            box-shadow: 0 8px 30px var(--shadow-soft);
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light));
+            color: var(--bg-dark);
+            padding: 5px 15px;
+            font-size: 0.8em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-left: 12px;
+            text-transform: uppercase;
+        }
+
+        .feature-item strong {
+            color: var(--accent-primary);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* Image Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0.2;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-gold);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.3);
+            transition: filter 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0);
+        }
+
+        /* Luxury CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #2d2823 0%, var(--accent-primary) 100%);
+            padding: 120px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1501339847302-ac426a4a7cbb-1.jpg') center/cover;
+            opacity: 0.06;
+            filter: grayscale(1);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 3em;
+            font-weight: 300;
+            letter-spacing: 10px;
+            color: #f8f6f3;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-text {
+            font-size: 1.3em;
+            color: #f8f6f3;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 2.2;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: #f8f6f3;
+            border: 2px solid var(--accent-gold);
+            padding: 18px 50px;
+            font-size: 1em;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: #1a1814;
+            border-color: var(--accent-gold);
+        }
+
+        /* Elegant Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 70px 60px 50px;
+            text-align: center;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logos img {
+            height: 60px;
+            opacity: 0.6;
+            filter: grayscale(0.5);
+            transition: all 0.5s ease;
+        }
+
+        .footer-logos img:hover {
+            opacity: 1;
+            filter: grayscale(0);
+        }
+
+        .footer-divider {
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 30px auto;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 2;
+        }
+
+        .footer-signature {
+            margin-top: 40px;
+            color: var(--text-light);
+            font-size: 0.85em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+
+            .hero-title {
+                font-size: 2.8em;
+                letter-spacing: 10px;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+                letter-spacing: 6px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 25px;
+            }
+
+            .logo-group {
+                gap: 30px;
+            }
+
+            .hero {
+                padding: 100px 0 80px;
+            }
+
+            .hero-title {
+                font-size: 2em;
+                letter-spacing: 6px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1em;
+                letter-spacing: 3px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+                letter-spacing: 4px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-section::before {
+                right: 20px;
+            }
+
+            .timeline-item {
+                padding-right: 70px;
+            }
+
+            .timeline-marker {
+                right: 8px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .cta-section {
+                padding: 80px 30px;
+            }
+
+            .cta-title {
+                font-size: 2em;
+                letter-spacing: 6px;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            thead th,
+            tbody td {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5em;
+                letter-spacing: 4px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+                letter-spacing: 3px;
+            }
+
+            .stat-number {
+                font-size: 3em;
+            }
+
+            .card {
+                padding: 35px 25px;
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Elegant Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-group">
+                    <div class="logo-item">
+                        <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/Lamiz-logo.webp" alt="قهوه لمیز">
+                        <span class="logo-label">Lamiz Coffee</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://sabanetsystem.com/wp-content/uploads/2022/11/logo-1-e1668361624526.png"
+                            alt="سبا سیستم">
+                        <span class="logo-label">Saba System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Luxury Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">ارتقای دیجیتال لمیز</h1>
+                <div class="hero-divider"></div>
+                <p class="hero-subtitle">پروپوزال جامع تحول دیجیتال و برندینگ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">مقدمه</span>
+                <h2 class="section-title">تحول دیجیتال یکپارچه</h2>
+                <p class="section-intro">
+                    قهوه لمیز به‌عنوان یکی از برندهای پیشرو در صنعت قهوه و کافی‌شاپ‌های زنجیره‌ای ایران، طی سال‌های اخیر
+                    جایگاه قابل توجهی در میان مصرف‌کنندگان شهری کسب کرده است. هدف این پروپوزال، ایجاد تحول دیجیتال
+                    یکپارچه در سه محور کلیدی است: بهبود عملیات داخلی و مدیریت منابع، تقویت ارتباط با مشتریان و افزایش
+                    وفاداری، و ارتقای برند با استانداردهای بین‌المللی.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">بخش اول</span>
+                <h2 class="section-title">تحلیل وضعیت فعلی</h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>حوزه</th>
+                            <th>چالش فعلی</th>
+                            <th>تأثیر مستقیم</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>منابع انسانی</td>
+                            <td>سیستم حضور و غیاب و شیفت‌بندی دستی از طریق تلگرام</td>
+                            <td>بی‌نظمی، خطا، نارضایتی پرسنل</td>
+                        </tr>
+                        <tr>
+                            <td>حقوق و دستمزد</td>
+                            <td>پرداخت‌ها بدون ساختار دقیق پاداش یا KPI</td>
+                            <td>کاهش انگیزه و بهره‌وری</td>
+                        </tr>
+                        <tr>
+                            <td>انبار و لجستیک</td>
+                            <td>مدیریت انبار و مواد اولیه به‌صورت دستی</td>
+                            <td>اتلاف منابع، کمبود یا مازاد موجودی</td>
+                        </tr>
+                        <tr>
+                            <td>صندوق و فروش</td>
+                            <td>نبود سیستم صندوق اتوماتیک و ثبت دقیق فروش</td>
+                            <td>احتمال خطای انسانی و مغایرت مالی</td>
+                        </tr>
+                        <tr>
+                            <td>حمل‌ونقل داخلی</td>
+                            <td>سیستم مشخصی برای توزیع بین شعب وجود ندارد</td>
+                            <td>تأخیر در تأمین مواد اولیه</td>
+                        </tr>
+                        <tr>
+                            <td>ارتباطات داخلی</td>
+                            <td>نبود پرتال سازمانی برای ارتباط بین شعب</td>
+                            <td>کندی ارتباطات، وابستگی به پیام‌رسان‌ها</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">بخش دوم</span>
+                <h2 class="section-title">راهکارهای جامع</h2>
+                <p class="section-intro">
+                    پیاده‌سازی سه سامانه یکپارچه دیجیتال که به‌صورت مکمل، تمامی ابعاد عملیاتی و بازاریابی برند را پوشش
+                    می‌دهد
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card reveal">
+                    <div class="card-icon">📱</div>
+                    <h3 class="card-title">اپلیکیشن مشتریان</h3>
+                    <p class="card-description">پلتفرم تعامل و وفاداری مشتریان برای تبدیل لمیز به یک جامعه تجربه‌محور
+                        دیجیتال</p>
+                    <ul>
+                        <li>باشگاه مشتریان با سطوح Silver / Gold / Platinum</li>
+                        <li>سفارش آنلاین با نوتیفیکیشن هوشمند آماده‌سازی</li>
+                        <li>نظرسنجی سریع و هوشمند پس از هر خرید</li>
+                        <li>محتوای تولید شده توسط کاربر و مسابقه ماهانه</li>
+                        <li>معرفی نوشیدنی‌های فصلی و رویدادهای لمیز</li>
+                    </ul>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">💼</div>
+                    <h3 class="card-title">اپلیکیشن سازمانی</h3>
+                    <p class="card-description">دیجیتال‌سازی کامل فرآیندهای عملیاتی برای تبدیل لمیز به سازمان داده‌محور
+                    </p>
+                    <ul>
+                        <li>حضور و غیاب هوشمند QR یا GPS-based</li>
+                        <li>مدیریت انبار با هشدار خودکار مواد اولیه</li>
+                        <li>ردیابی سفارشات و بهینه‌سازی لجستیک</li>
+                        <li>داشبورد مدیریتی آنلاین و گزارش‌گیری جامع</li>
+                        <li>پرتال ارتباطی پرسنل و دریافت فیش حقوقی</li>
+                    </ul>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">مارکتینگ دیجیتال</h3>
+                    <p class="card-description">ارتقای هویت بصری و تقویت تجربه احساسی مشتریان با استراتژی محتوای حرفه‌ای
+                    </p>
+                    <ul>
+                        <li>بازطراحی هویت بصری برند و یکپارچه‌سازی</li>
+                        <li>تولید محتوای حرفه‌ای برای شبکه‌های اجتماعی</li>
+                        <li>کمپین‌های فصلی و محصول ویژه</li>
+                        <li>بازاریابی هدفمند بر اساس داده‌های CRM</li>
+                        <li>مانیتورینگ تجربه مشتری و تحلیل احساسات</li>
+                        <li>کمپین لحظه‌ی لمیز تو</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">بخش سوم</span>
+                <h2 class="section-title">مزایای کلان</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-number">۳۰٪</div>
+                    <div class="stat-label">کاهش هزینه‌های<br>عملیاتی</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-number">۲۵٪</div>
+                    <div class="stat-label">افزایش بهره‌وری<br>کارکنان</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-number">۴۰٪</div>
+                    <div class="stat-label">رشد نرخ بازگشت<br>مشتری</div>
+                </div>
+            </div>
+
+            <div class="table-wrapper" style="margin-top: 80px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>حوزه</th>
+                            <th>دستاورد اصلی</th>
+                            <th>تأثیر قابل اندازه‌گیری</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>عملیات سازمانی</td>
+                            <td>اتوماسیون فرآیندها و حذف خطای انسانی</td>
+                            <td>کاهش ۳۰٪ هزینه‌های عملیاتی</td>
+                        </tr>
+                        <tr>
+                            <td>منابع انسانی</td>
+                            <td>نظم در حضور و پرداخت، انگیزش بالاتر</td>
+                            <td>افزایش ۲۵٪ بهره‌وری کارکنان</td>
+                        </tr>
+                        <tr>
+                            <td>مشتریان</td>
+                            <td>افزایش تعامل و وفاداری مشتریان</td>
+                            <td>رشد ۴۰٪ نرخ بازگشت مشتری</td>
+                        </tr>
+                        <tr>
+                            <td>برندینگ</td>
+                            <td>حضور قوی دیجیتال و هویت یکپارچه</td>
+                            <td>افزایش ارزش برند و تمایز از رقبا</td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت کلان</td>
+                            <td>دسترسی به داده‌های تحلیلی لحظه‌ای</td>
+                            <td>تصمیم‌گیری سریع‌تر و دقیق‌تر</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">بخش چهارم</span>
+                <h2 class="section-title">مزیت رقابتی</h2>
+                <p class="section-intro">
+                    با اجرای این طرح، لمیز از مرحله «کافه‌های مشابه داخلی» عبور کرده و در جایگاه «برند تجربه قهوه
+                    ایرانی» قرار می‌گیرد
+                </p>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item reveal">
+                    <span class="feature-badge">Unique</span>
+                    <strong>اپلیکیشن یکپارچه برای مشتری و سازمان</strong> — در هیچ برند داخلی مشابه وجود ندارد
+                </div>
+                <div class="feature-item reveal">
+                    <span class="feature-badge">End-to-End</span>
+                    <strong>تجربه دیجیتال کامل</strong> — از سفارش تا دریافت بازخورد
+                </div>
+                <div class="feature-item reveal">
+                    <span class="feature-badge">Real-time</span>
+                    <strong>سیستم گزارش‌دهی لحظه‌ای</strong> — برای مدیران ارشد و تصمیم‌گیری سریع
+                </div>
+                <div class="feature-item reveal">
+                    <span class="feature-badge">Data-Driven</span>
+                    <strong>استفاده از داده برای بازاریابی</strong> — تصمیمات هوشمند و توسعه شعب
+                </div>
+                <div class="feature-item reveal">
+                    <span class="feature-badge">Zero-Error</span>
+                    <strong>کاهش شدید خطاهای عملیاتی</strong> — مالی، انباری و انسانی
+                </div>
+                <div class="feature-item reveal">
+                    <span class="feature-badge">Third-Place</span>
+                    <strong>تثبیت جایگاه لمیز</strong> — به فضای سوم بین خانه و محل کار
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">بخش پنجم</span>
+                <h2 class="section-title">نقشه زمان‌بندی اجرا</h2>
+            </div>
+
+            <div class="timeline-section">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-phase">فاز اول — تحلیل و طراحی</h4>
+                        <span class="timeline-duration">۱ ماه</span>
+                        <p class="timeline-desc">تحلیل دقیق نیازمندی‌ها و طراحی تجربه کاربری اپلیکیشن‌ها</p>
+                        <p class="timeline-output"><strong>خروجی:</strong> مستند نیازمندی + پروتوتایپ</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-phase">فاز دوم — توسعه اپ سازمانی</h4>
+                        <span class="timeline-duration">۳ ماه</span>
+                        <p class="timeline-desc">توسعه اپلیکیشن سازمانی و مدیریت شعب</p>
+                        <p class="timeline-output"><strong>خروجی:</strong> اپ نسخه داخلی (HR + انبار + گزارش)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-phase">فاز سوم — توسعه اپ مشتریان</h4>
+                        <span class="timeline-duration">۳ ماه</span>
+                        <p class="timeline-desc">توسعه اپلیکیشن مشتریان و باشگاه وفاداری</p>
+                        <p class="timeline-output"><strong>خروجی:</strong> اپ موبایل iOS/Android + CRM</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-phase">فاز چهارم — راه‌اندازی کمپین</h4>
+                        <span class="timeline-duration">۲ ماه</span>
+                        <p class="timeline-desc">راه‌اندازی کمپین دیجیتال و برندینگ جدید</p>
+                        <p class="timeline-output"><strong>خروجی:</strong> بازطراحی برند + استراتژی محتوا</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-phase">فاز پنجم — پایش و بهینه‌سازی</h4>
+                        <span class="timeline-duration">مداوم</span>
+                        <p class="timeline-desc">پایش عملکرد و بهینه‌سازی مستمر سیستم‌ها</p>
+                        <p class="timeline-output"><strong>خروجی:</strong> گزارش ماهانه KPI و اصلاحات</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">تجربه بصری</span>
+                <h2 class="section-title">فضای مدرن کافه</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1501339847302-ac426a4a7cbb.jpg"
+                        alt="Interior coffee shop">
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1442512595331-e89e73853f31.jpg"
+                        alt="Light filled cafe">
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1445116572660-236099ec97a0.jpg"
+                        alt="Modern cafe interior">
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1511081692775-05d0f180a065.jpg"
+                        alt="Latte art">
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1509042239860-f550ce710b93.jpg"
+                        alt="Coffee beans">
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/photo-1453614512568-c4024d13c247.jpg"
+                        alt="Barista">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">آماده تحول دیجیتال</h2>
+                <p class="cta-text">
+                    با اجرای این استراتژی، لمیز از محدودیت‌های سنتی مدیریت خارج می‌شود، بهره‌وری و هماهنگی بین شعب
+                    افزایش می‌یابد، و در نهایت، برند لمیز به‌عنوان نماد قهوه مدرن و دیجیتال ایران تثبیت خواهد شد
+                </p>
+                <a href="https://sabanetsystem.com" class="cta-button">شروع همکاری</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logos">
+                <img src="https://sabanetsystem.com/wp-content/uploads/2025/10/Lamiz-logo.webp" alt="قهوه لمیز">
+                <img src="https://sabanetsystem.com/wp-content/uploads/2022/11/logo-1-e1668361624526.png"
+                    alt="سبا سیستم">
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-text">پروپوزال ارتقای دیجیتال قهوه لمیز</p>
+            <p class="footer-text">تهیه شده توسط سبا سیستم | sabanetsystem.com</p>
+            <p class="footer-signature">© ۱۴۰۴ تمامی حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation on page load
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            header.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                header.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                header.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Reveal elements on scroll
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        reveals.forEach(reveal => {
+            revealObserver.observe(reveal);
+        });
+
+        // Header shadow on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 8px 30px var(--shadow-soft)';
+                header.style.background = 'var(--bg-secondary)';
+            } else {
+                header.style.boxShadow = 'none';
+                header.style.background = 'var(--bg-secondary)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effect to table rows
+        const tableRows = document.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateX(-5px)';
+            });
+            row.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+
+</html>
